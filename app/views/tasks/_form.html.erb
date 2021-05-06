@@ -1,0 +1,4 @@
+<%= form_for(task, remote: true, data: { action: 'ajax:success->tasks#load'}) do |f| %>
+   <%= f.text_field :title %>
+   <%= f.submit "Add" %>
+<% end %>

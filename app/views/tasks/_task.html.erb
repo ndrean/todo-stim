@@ -1,0 +1,8 @@
+<li>  
+      <% if task.completed %>
+         <s><%= task.title %></s>
+      <% else %>
+         <%= task.title %> - <%= link_to('Complete', complete_task_path(task), remote: true, data: { action: 'ajax:success->tasks#load'}) %>
+      <% end %>
+
+   </li>

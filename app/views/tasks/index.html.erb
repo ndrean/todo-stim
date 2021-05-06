@@ -1,0 +1,25 @@
+<div data-controller="counter">
+<h4>Query count nb of Tasks: <%= @task_all  %></h4>
+<h4>Query count nb complet tasks: <%= @task_completed  %></h4>
+<button data-action="click->counter#refresh">
+Fetch() completed tasks: <span data-counter-target="count"></span>
+</button>
+
+</div>
+<div>
+   <h3>Enter new task:</h3>
+   <%= render 'tasks/form', task: @task %>
+</div>
+<h2>Tasks list</h2>
+<p>rendered by iterating partials</p>
+<ul>
+    <%= render(partial: 'tasks/task', collection: @tasks) %>
+
+    <!-- below is equivalent output but BAD since it calls n times a partial:
+   -->
+   <h2>Again</h2>
+   <% @tasks.each do |task| %>
+      <%= render 'tasks/task', task: task %>
+   <% end %>
+   
+</ul>
